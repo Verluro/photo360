@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo360 Studio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Photo360 Studio</h1>
+      <p>Twórz profesjonalne spacery 360° i dodawaj interaktywne punkty informacji.</p>
+    </header>
+
+    <main class="layout">
+      <aside class="panel controls">
+        <section>
+          <h2>1. Dodaj scenę 360°</h2>
+          <label for="sceneName">Nazwa sceny</label>
+          <input id="sceneName" type="text" placeholder="Np. Salon" />
+
+          <label for="sceneImage">Zdjęcie equirectangular (JPG/PNG)</label>
+          <input id="sceneImage" type="file" accept="image/*" />
+
+          <button id="addSceneBtn" type="button">Dodaj scenę</button>
+        </section>
+
+        <section>
+          <h2>2. Hotspot informacyjny</h2>
+          <p class="hint">Kliknij podgląd panoramy, aby ustawić pozycję hotspotu.</p>
+
+          <label for="hotspotTitle">Tytuł</label>
+          <input id="hotspotTitle" type="text" placeholder="Np. Obraz impresjonistyczny" />
+
+          <label for="hotspotDesc">Opis</label>
+          <textarea id="hotspotDesc" rows="3" placeholder="Opis obiektu..."></textarea>
+
+          <label for="hotspotImage">Zdjęcie obiektu (opcjonalnie)</label>
+          <input id="hotspotImage" type="file" accept="image/*" />
+
+          <label for="hotspotTarget">Przejście do sceny (opcjonalnie)</label>
+          <select id="hotspotTarget">
+            <option value="">Brak przejścia</option>
+          </select>
+
+          <div class="coords">
+            <span>Pitch: <strong id="pitchValue">-</strong></span>
+            <span>Yaw: <strong id="yawValue">-</strong></span>
+          </div>
+
+          <button id="addHotspotBtn" type="button">Dodaj hotspot</button>
+        </section>
+
+        <section>
+          <h2>3. Zarządzanie projektem</h2>
+          <div class="row">
+            <button id="exportBtn" type="button">Eksportuj JSON</button>
+            <label class="file-btn" for="importInput">Importuj JSON</label>
+            <input id="importInput" type="file" accept="application/json" />
+          </div>
+          <button id="clearBtn" type="button" class="danger">Wyczyść projekt</button>
+        </section>
+      </aside>
+
+      <section class="viewer-area">
+        <div class="toolbar">
+          <label for="sceneSelect">Aktywna scena:</label>
+          <select id="sceneSelect"></select>
+        </div>
+
+        <div id="viewer"></div>
+      </section>
+    </main>
+
+    <dialog id="infoModal">
+      <article>
+        <h3 id="modalTitle"></h3>
+        <img id="modalImage" alt="Zdjęcie obiektu" />
+        <p id="modalDescription"></p>
+        <button id="closeModal" type="button">Zamknij</button>
+      </article>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

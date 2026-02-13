@@ -1,0 +1,184 @@
+:root {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --panel: #172234;
+  --panel-border: #2e425e;
+  --accent: #2cc5ff;
+  --text: #eaf2ff;
+  --muted: #afbdd3;
+  --danger: #ff5f76;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(circle at top, #101c30 0%, var(--bg) 52%);
+  color: var(--text);
+}
+
+.app-header {
+  padding: 1rem 1.5rem 0.75rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.app-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 380px) 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  min-height: calc(100vh - 88px);
+}
+
+.panel {
+  background: color-mix(in srgb, var(--panel) 88%, #000);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.controls {
+  overflow-y: auto;
+}
+
+.controls section {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--panel-border);
+}
+
+.controls section:last-child {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+label,
+.hint,
+.coords {
+  display: block;
+  margin: 0.45rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+input,
+textarea,
+select,
+button,
+.file-btn {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--panel-border);
+  background: #121d2f;
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.93rem;
+}
+
+button,
+.file-btn {
+  cursor: pointer;
+  background: linear-gradient(150deg, #1f334f, #15263d);
+  transition: transform 130ms ease, border-color 130ms ease;
+  text-align: center;
+}
+
+button:hover,
+.file-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+button.danger {
+  border-color: #8f3042;
+  color: #ffbac7;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.row > * {
+  flex: 1;
+}
+
+#importInput {
+  display: none;
+}
+
+.viewer-area {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.toolbar {
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toolbar select {
+  margin: 0;
+  width: min(320px, 100%);
+}
+
+#viewer {
+  flex: 1;
+  min-height: 520px;
+  border-radius: 14px;
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+}
+
+dialog {
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  border-radius: 12px;
+  color: var(--text);
+  max-width: 480px;
+  width: calc(100% - 2rem);
+}
+
+dialog::backdrop {
+  background: rgba(1, 8, 18, 0.65);
+}
+
+dialog img {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+}
+
+@media (max-width: 1080px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  #viewer {
+    min-height: 420px;
+  }
+}
